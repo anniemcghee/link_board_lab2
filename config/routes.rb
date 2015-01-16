@@ -13,9 +13,18 @@ Rails.application.routes.draw do
   resources :users
   get 'signup' => 'users#new', as: :signup
 
-
-
   resources :posts
+  get "posts/:id/comments" => "posts#comments", as: :post_comments
+  post "posts/:id/comments" => "posts#create_comment"
+
+  # resources :comments
+  # Notice the similarities between the posts comments and comment comments routes / naming
+
+  get "comments/:id/comments/new" => "comments#new_comment", as: :new_comment_comment
+  post "comments/:id/comments" => "comments#create_comment", as: :comment_comments
+
+
+
 
   # get 'users/new'
 

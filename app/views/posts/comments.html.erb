@@ -1,0 +1,16 @@
+<h1><%= link_to @post.title, @post.link, :target => "_blank" %></h1>
+
+<div>
+<%= form_for @comment , url: post_comments_path , html: {class:"form"} do |f| %>
+<div class="form-group">
+<%= f.text_area :body,:placeholder => "Enter your comment" %>
+</div>
+
+<%= f.submit "Post Comment", :class => "btn btn-primary" %>
+<% end %>
+</div>
+<br>
+
+<ul class="list-group">
+  <%= render :partial => 'comment', :collection => @post.comments %>
+</ul>

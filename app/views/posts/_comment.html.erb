@@ -1,0 +1,24 @@
+
+
+<li class="comment">
+
+  <div>
+    <%= comment.body %>
+    <%= link_to "Reply", new_comment_comment_path(comment) %>
+  </div>
+  <div>
+    <% if comment.user %>
+      <em>Posted by <%= comment.user.name %> <%= format_creation_time comment %></em>
+    <% end %>
+    <hr>
+  </div>
+  <% unless comment.comments.empty? %>
+  <ul class="comment_list">
+      <%= render :partial => 'comment', :collection => comment.comments %>
+  </ul>
+  <% end %>
+  <!-- the above unless statement is the important part. It renders the sub comments. -->
+  <!-- THIS IS RECURSIVE because i'm talking about the partial in the partial which replays everything until there's no more sub comments -->
+
+
+</li>
