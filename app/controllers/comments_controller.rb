@@ -15,7 +15,17 @@ class CommentsController < ApplicationController
   end
 
   def create_vote
-    render json:params[:id]
+      return unless is_authenticated?
+      user = User.find_by_id(@current_user['id'])
+      comment = Comment.find_by_id(params[:id])
+      existing_vote = comment.votes.where(user_id: user.id).any?
+
+      if existing_vote
+        flash[:warning]= "You already voted on this!"
+      else
+        user.votes << comment.votes.create
+      end
+      redirect_to post_comments_path(parent_post(comment))
   end
 
   private

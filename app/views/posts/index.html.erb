@@ -1,23 +1,19 @@
 <h3>Latest posts</h3>
 <table class="table">
 <tr>
-    <th>Score</th>
+    <th>Votes</th>
     <th>Title</th>
     <th>User</th>
     <th>Posted</th>
-    <th>Votes</th>
     <th>Comments</th>
 </tr>
 <% if @posts.any? %>
     <% @posts.each do |post| %>
         <tr>
-            <td>0</td>
+            <td><%= link_to '<i class="glyphicon glyphicon-thumbs-up"></i>'.html_safe, post_votes_path(post), method: "post" %> <%= post.votes.length %></td>
             <td><%= link_to post.title,post.link, :target=>'_blank' %></td>
             <td><%= post.user ? post.user.name : 'Unknown' %></td>
             <td><%= format_creation_time post %></td>
-            <td><button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-            </button> 0</td>
             <td><%= link_to "Comment", post_comments_path(post), :class => "btn btn-danger btn-sm" %></td>
         </tr>
     <% end %>
@@ -28,3 +24,4 @@
 <% end %>
 
 <!-- next to the post add the post.votes.length HERE -->
+

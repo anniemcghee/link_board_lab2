@@ -9,9 +9,7 @@
   <div>
     <% if comment.user %>
       <em>Posted by <%= comment.user.name %> <%= format_creation_time comment %></em> |
-      <button type="button" class="btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      </button> <%= @comment.votes.length %></td>
+      <%= link_to '<i class="glyphicon glyphicon-thumbs-up"></i>'.html_safe, comment_votes_path(comment), method: "post" %><%= comment.votes.length %>
     <% end %>
     <hr>
   </div>

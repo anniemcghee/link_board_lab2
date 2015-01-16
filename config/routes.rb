@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   get "comments/:id/comments/new" => "comments#new_comment", as: :new_comment_comment
   post "comments/:id/comments" => "comments#create_comment", as: :comment_comments
 
-  post "posts/:id/votes" => 'posts#create_vote', as: :post_vote
-  post "comments/:id/votes" => 'comments#create_vote', as: :comment_vote
+  post "posts/:id/votes" => 'posts#create_vote', as: :post_votes
+  post "comments/:id/votes" => 'comments#create_vote', as: :comment_votes
 
 
 
