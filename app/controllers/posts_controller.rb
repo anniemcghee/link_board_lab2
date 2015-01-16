@@ -35,12 +35,14 @@ class PostsController < ApplicationController
     def comments
       @post = Post.find_by_id(params[:id])
       @comment = Comment.new
+      @vote = @post.votes.length
     end
 
     def create_comment
       return unless is_authenticated?
       user = User.find_by_id(@current_user['id'])
       post = Post.find_by_id(params[:id])
+      @comment = post.comments.create({body:params[:comment][:body]})
       user.comments << post.comments.create({body:params[:comment][:body]})
       redirect_to post_comments_path
     end

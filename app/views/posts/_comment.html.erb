@@ -3,12 +3,15 @@
 <li class="comment">
 
   <div>
-    <%= comment.body %>
-    <%= link_to "Reply", new_comment_comment_path(comment) %>
+    <%= comment.body %> |
+    <em><%= link_to "Reply", new_comment_comment_path(comment) %></em>
   </div>
   <div>
     <% if comment.user %>
-      <em>Posted by <%= comment.user.name %> <%= format_creation_time comment %></em>
+      <em>Posted by <%= comment.user.name %> <%= format_creation_time comment %></em> |
+      <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+      </button> <%= @comment.votes.length %></td>
     <% end %>
     <hr>
   </div>
