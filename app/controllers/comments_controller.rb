@@ -14,6 +14,10 @@ class CommentsController < ApplicationController
       redirect_to post_comments_path(parent_post(comment))
   end
 
+  def create_vote
+    render json:params[:id]
+  end
+
   private
 
   def parent_post comment

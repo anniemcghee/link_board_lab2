@@ -18,7 +18,7 @@
             <td><button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
             </button> 0</td>
-            <td>0</td>
+            <td><%= link_to "Comment", post_comments_path(post), :class => "btn btn-danger btn-sm" %></td>
         </tr>
     <% end %>
 <% else %>

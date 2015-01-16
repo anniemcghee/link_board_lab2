@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
     has_many :posts
     has_many :comments
-    has_many :votes, as: :voteable
+    has_many :votes
 
     validates :email,
     presence: true,
